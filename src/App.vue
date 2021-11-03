@@ -1,13 +1,98 @@
 <template>
-  <div />
+  <div id="app">
+    <the-header :title="title"></the-header>
+    <navigation></navigation>
+    <main id="main">
+      <the-transactions></the-transactions>
+    </main>
+  </div>
 </template>
 
 <script>
+import TheHeader from './components/TheHeader/TheHeader.vue';
+import Navigation from './components/Navigation/Navigation.vue';
+import TheTransactions from './components/TheTransactions/TheTransactions.vue';
+
 export default {
-  name: 'App'
+    components: {
+      TheHeader,
+      Navigation,
+      TheTransactions
+    },
+    data(){
+      return {
+        title: 'Money Tracker',
+        transactions: [
+          { id: 1, title: 'Belanja Bulanan', created_at: '10-05-2021', type: 'exp', total: 500000 },
+          { id: 2, title: 'Fee Project', created_at: '20-05-2021', type: 'inc', total: 14000000 },
+          { id: 3, title: 'Sallary', created_at: '18-05-2021', type: 'inc', total: 44000000 },
+          { id: 4, title: 'Bayar Wifi', created_at: '05-05-2021', type: 'exp', total: 500000 },
+          { id: 5, title: 'Bayar Motor', created_at: '15-05-2021', type: 'exp', total: 1500000 },
+          { id: 6, title: 'Investasi', created_at: '15-05-2021', type: 'exp', total: 5000000 },
+          { id: 7, title: 'Bayar Wisuda', created_at: '15-05-2021', type: 'exp', total: 1900000 },
+          { id: 8, title: 'Coffe Shop', created_at: '15-05-2021', type: 'exp', total: 2500000 },
+          { id: 9, title: 'Belanja Bulanan', created_at: '10-05-2021', type: 'exp', total: 500000 },
+          { id: 10, title: 'Fee Project', created_at: '20-05-2021', type: 'inc', total: 14000000 },
+          { id: 11, title: 'Sallary', created_at: '18-05-2021', type: 'inc', total: 44000000 },
+          { id: 12, title: 'Bayar Wifi', created_at: '05-05-2021', type: 'exp', total: 500000 },
+          { id: 13, title: 'Bayar Motor', created_at: '15-05-2021', type: 'exp', total: 1500000 },
+          { id: 14, title: 'Investasi', created_at: '15-05-2021', type: 'exp', total: 5000000 },
+          { id: 15, title: 'Bayar Wisuda', created_at: '15-05-2021', type: 'exp', total: 1900000 },
+          { id: 16, title: 'Coffe Shop', created_at: '15-05-2021', type: 'exp', total: 2500000 },
+        ]
+      }
+    },
+    provide(){
+      return {
+        transactions: this.transactions
+      }
+    }
 }
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;900&display=swap');
 
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --color-green: #105652;
+    --color-red: #B91646;
+  }
+
+  *,
+  *::before,
+  *::after {
+      box-sizing: inherit;
+  }
+
+  html {
+      box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    font-size: 62.5%;
+    background-color: #fff;
+  }
+
+  #app {
+    width: 60%;
+    margin: auto;
+  }
+
+  .green-text {
+    color: var(--color-green);
+  }
+
+  .red-text {
+    color: var(--color-red);
+  }
 </style>
