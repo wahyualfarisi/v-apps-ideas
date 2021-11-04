@@ -1,24 +1,25 @@
 <template>
-    <div class="total">
+    <div class="total" data-test="divTotal">
         <div class="total_type green-text">
             <p>+ Incomes</p>
-            <h2>{{ totalIncomes }} </h2>
+            <h2 data-test="total-inc">{{ totalIncomes }} </h2>
         </div>
         <div class="total_type red-text">
             <p>- Expenses</p>
-            <h2> {{ totalExpenses }} </h2>
+            <h2 data-test="total-exp"> {{ totalExpenses }} </h2>
         </div>
     </div>
     <ul>
-    <transaction-item 
-        v-for="trx in getData"
-        :key="trx.id"
-        :id="trx.id.toString()"
-        :title="trx.title"
-        :type="trx.type"
-        :total="trx.total"
-        :created_at="trx.created_at">
-    </transaction-item>
+        <transaction-item 
+            data-test="trx"
+            v-for="trx in getData"
+            :key="trx.id"
+            :id="trx.id.toString()"
+            :title="trx.title"
+            :type="trx.type"
+            :total="trx.total"
+            :created_at="trx.created_at">
+        </transaction-item>
     </ul>
     <pagination
         :totalCount="transactions.length"
