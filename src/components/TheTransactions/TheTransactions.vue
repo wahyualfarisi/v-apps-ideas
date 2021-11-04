@@ -19,16 +19,23 @@
         :total="trx.total"
         :created_at="trx.created_at">
     </transaction-item>
-    <button v-if="prevCondition" @click="setPrevPage">PREV</button>
-    <button v-if="nextCondition" @click="setCurrentPage">NEXT</button>
     </ul>
+    <pagination
+        :totalCount="transactions.length"
+        :pageSize="pageSize"
+        :siblingCount="1"
+        :currentPage="currentPage"
+        :onPageHandler="setPageHandler"
+    ></pagination>
 </template>
 
 <script>
 import TransactionItem from './TransactionItem.vue';
+import Pagination from './../Pagination/Pagination.vue';
 export default {
     components: {
-        TransactionItem
+        TransactionItem,
+        Pagination
     },
     inject: {
         transactions: {
@@ -47,13 +54,6 @@ export default {
             const lastPageIndex = firstPageIndex + this.pageSize;
             return this.transactions.slice(firstPageIndex, lastPageIndex);
         },
-        nextCondition() {
-            const totalPageCount = Math.ceil( this.transactions.length / this.pageSize );
-            return this.currentPage < totalPageCount
-        },
-        prevCondition(){
-            return this.currentPage !== 1
-        },
         totalIncomes(){
             let sum = 0;
             let filterTrx = this.transactions.filter(item => item.type === 'inc');
@@ -68,17 +68,15 @@ export default {
         }
     },
     methods: {
-        setCurrentPage(){
-            this.currentPage++
-        },
-        setPrevPage(){
-            this.currentPage--
+        setPageHandler(page){
+            this.currentPage = page;
         }
     }
 }
 </script>
 
 <style scoped>
+
   ul {
     list-style-type: none;
   }
