@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import TheTransactions from '@/components/TheTransactions/TheTransactions.vue';
+import TheTransactions from './../TheTransactions.vue';
 
 let provide = {
     transactions: [

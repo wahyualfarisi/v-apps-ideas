@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import TheHeader from '@/components/TheHeader/TheHeader.vue';
+import TheHeader from './../TheHeader.vue';
 
 describe('TheHeader.vue', () => {
 
