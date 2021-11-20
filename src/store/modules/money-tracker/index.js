@@ -8,7 +8,7 @@ export default {
     namespaced: true,
     state(){
         return {
-            transactions: mockdata || []
+            transactions:  mockdata
         }
     },
     getters,

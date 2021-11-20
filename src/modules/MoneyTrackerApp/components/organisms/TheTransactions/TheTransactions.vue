@@ -1,5 +1,5 @@
 <template>
-    <div class="total" data-test="divTotal">
+    <div class="total">
         <div class="total_type green-text">
             <p>+ Incomes</p>
             <h2 data-test="total-inc">{{ totalIncomes }} </h2>
@@ -9,7 +9,7 @@
             <h2 data-test="total-exp"> {{ totalExpenses }} </h2>
         </div>
     </div>
-    <ul>
+    <ul v-if="transactions.length > 0">
         <transaction-item 
             data-test="trx"
             v-for="trx in getData"
@@ -21,7 +21,14 @@
             :created_at="trx.created_at">
         </transaction-item>
     </ul>
+
+    <p 
+        v-else
+        class="transaction-empty" 
+    >Transaction Empty</p>
+
     <pagination
+        v-if="transactions.length > 0"
         :totalCount="transactions.length"
         :pageSize="pageSize"
         :siblingCount="1"
@@ -101,4 +108,10 @@ export default {
     flex-direction: column;
   }
   /* Total */
+
+  .transaction-empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
 </style>

@@ -1,33 +1,114 @@
 import { mount } from '@vue/test-utils';
 import TheTransactions from './../TheTransactions.vue';
+import Pagination from './../../Pagination/Pagination.vue';
+import TransactionItem from './../../../molecules/TransactionItem';
+import store from './../../../../../../store';
 
-let provide = {
-    transactions: [
-        { id: 1, title: 'Belanja Bulanans', created_at: '10-05-2021', type: 'exp', total: 500000 },
-        { id: 2, title: 'isi bensin', created_at: '10-05-2021', type: 'exp', total: 10000 },
-        { id: 3, title: 'Hmmm', created_at: '10-05-2021', type: 'inc', total: 55000 },
-    ]
-}
 
 describe('TheTransactions.vue', () => {
-    
-    it('renders transactions total', () => {
-
-        const wrapper = mount(TheTransactions, {
+ 
+    it('Should renders transactions', () => {
+        let wrapper = mount(TheTransactions, {
             global: {
-                provide: provide
+                mocks: {
+                    $store: store
+                }
             }
         });
-        
-        const list = wrapper.get('[data-test="trx"]');
-        expect(list.text()).toContain("Belanja")
+       expect(wrapper.isVisible()).toBe(true);
+    });
 
-        const total_exp = wrapper.get('[data-test="total-exp"]');
-        expect(total_exp.text()).toBe("510000")
+    it('Should renders Total', () => {
+        let wrapper = mount(TheTransactions, {
+            global: {
+                mocks: {
+                    $store: store
+                }
+            }
+        });
+       expect(wrapper.find('.total').exists()).toBe(true);
+    });
 
-        const total_inc = wrapper.get('[data-test="total-inc"]');
-        expect(total_inc.text()).toBe("55000")
-        
+    it('should renders pagination', () => {
+        let wrapper = mount(TheTransactions, {
+            global: {
+                mocks: {
+                    $store: store
+                }
+            }
+        });
+        const paginationCmp = wrapper.findComponent(Pagination);
+        expect(paginationCmp.exists()).toBe(true);
+    });
+
+    it('should not renders pagination', () => {
+        let wrapper = mount(TheTransactions, {
+            global: {
+                mocks: {
+                    $store: {
+                        getters: {
+                            'moneyTracker/getAllTransactions': []
+                        }
+                    }
+                }
+            }
+        });
+        const paginationCmp = wrapper.findComponent(Pagination);
+        expect(paginationCmp.exists()).toBe(false);
+    });
+
+    it('should not renders transactionITem', () => {
+        let wrapper = mount(TheTransactions, {
+            global: {
+                mocks: {
+                    $store: {
+                        getters: {
+                            'moneyTracker/getAllTransactions': []
+                        }
+                    }
+                }
+            }
+        });
+        const trxItem = wrapper.findComponent(TransactionItem);
+        expect(trxItem.exists()).toBe(false);
+
+        const textEmpty = wrapper.find('.transaction-empty');
+        expect(textEmpty.text()).toBe('Transaction Empty');
+    });
+
+    it('should renders 0 in total incomes && 0 in total expense', () => {
+        let wrapper = mount(TheTransactions, {
+            global: {
+                mocks: {
+                    $store: {
+                        getters: {
+                            'moneyTracker/getAllTransactions': []
+                        }
+                    }
+                }
+            }
+        });
+        expect(wrapper.get('[data-test="total-inc"]').text()).toBe('0')
+        expect(wrapper.get('[data-test="total-exp"]').text()).toBe('0')
+    });
+
+    it('should renders 14000000 in total incomes && 500000 in total expense', () => {
+        let wrapper = mount(TheTransactions, {
+            global: {
+                mocks: {
+                    $store: {
+                        getters: {
+                            'moneyTracker/getAllTransactions': [
+                                { id: 1, title: 'Belanja Bulanan', created_at: '10-05-2021', type: 'exp', total: 500000 },
+                                { id: 2, title: 'Fee Project', created_at: '20-05-2021', type: 'inc', total: 14000000 },
+                            ]
+                        }
+                    }
+                }
+            }
+        });
+        expect( wrapper.get('[data-test="total-inc"]').text() ).toBe('14000000')
+        expect( wrapper.get('[data-test="total-exp"]').text() ).toBe('500000')
     });
 
 });
