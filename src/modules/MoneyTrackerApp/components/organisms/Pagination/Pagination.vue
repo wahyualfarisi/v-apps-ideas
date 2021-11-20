@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import PaginationItem from './PaginationItem.vue';
+import PaginationItem from './../../molecules/PaginationItem';
 
 function range(start, end) {
     const length = end - start + 1;

@@ -18,8 +18,6 @@
         >
         {{ page }}
     </li>
-    
-
 </template>
 
 <script>

@@ -2,8 +2,8 @@
     <the-transactions></the-transactions>
 </template>
 <script>
-import TheTransactions from '../components/TheTransactions/TheTransactions.vue';
-import MockData from './../mock-data/transactions';
+import TheTransactions from './../organisms/TheTransactions/TheTransactions';
+import MockData from './../../mock-data/transactions';
 export default {
     components: {
       TheTransactions
@@ -34,8 +34,6 @@ export default {
     font-size: 62.5%;
     background-color: #fff;
   }
-
-
 
   .green-text {
     color: var(--color-green);

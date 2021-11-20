@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import TransactionItem from './TransactionItem.vue';
-import Pagination from './../Pagination/Pagination.vue';
+import TransactionItem from './../../molecules/TransactionItem';
+import Pagination from './../Pagination/Pagination';
 export default {
     components: {
         TransactionItem,

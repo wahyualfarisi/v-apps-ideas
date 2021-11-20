@@ -4,8 +4,8 @@ import MainPage from './../pages/MainPage.vue';
 
 //Money Tracker
 import MoneyTrackerApp from '../modules/MoneyTrackerApp'; //container
-import MoneyTrackerTransactionList from './../modules/MoneyTrackerApp/pages/TransactionListPage.vue'; //children
-import MoneyTrackerAddTransaction from './../modules/MoneyTrackerApp/pages/AddTransactionPage.vue'; //children
+import MoneyTrackerTransactionList from './../modules/MoneyTrackerApp/components/pages/TransactionListPage.vue'; //children
+import MoneyTrackerAddTransaction from './../modules/MoneyTrackerApp/components/pages/AddTransactionPage.vue'; //children
 
 export const routes = [
     {
