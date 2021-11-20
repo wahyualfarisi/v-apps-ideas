@@ -1,7 +1,7 @@
 import types from './types';
 
 export default {
-    [types.createTransaction](context, payload){
-        context.commit(types.createTransaction, payload);
+    [types.createTransaction]({ commit }, payload){
+        commit(types.createTransaction, payload);
     }
 };
