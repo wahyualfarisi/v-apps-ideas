@@ -7,11 +7,7 @@ import MoneyTrackerApp from '../modules/MoneyTrackerApp'; //container
 import MoneyTrackerTransactionList from './../modules/MoneyTrackerApp/components/pages/TransactionListPage.vue'; //children
 import MoneyTrackerAddTransaction from './../modules/MoneyTrackerApp/components/pages/AddTransactionPage.vue'; //children
 
-export const routes = [
-    {
-        path: '/',
-        component: MainPage
-    },
+export const routesProject = [
     {
         path: '/money-tracker',
         name: 'MoneyTrackerPage',
@@ -34,6 +30,14 @@ export const routes = [
             }
         ]   
     }
+]
+
+const routes = [
+    {
+        path: '/',
+        component: MainPage
+    },
+    ...routesProject
 ]
 
 const router = createRouter({
