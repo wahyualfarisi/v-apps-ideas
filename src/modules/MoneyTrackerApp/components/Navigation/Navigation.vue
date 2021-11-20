@@ -1,12 +1,24 @@
 <template>
    <nav>
       <ul>
-        <li><a href="#" :class="{ active: true }">Data</a> </li>
-        <li><a href="#">New Transaction</a> </li>
+        <li><router-link :to="listTransactionLink">List</router-link> </li>
+        <li><router-link :to="newTransactionLink">New Transaction</router-link> </li>
       </ul>
     </nav>
 </template>
 
+<script>
+export default {
+    computed: {
+        newTransactionLink(){
+            return 'add-transaction'
+        },
+        listTransactionLink(){
+            return 'list-transaction'
+        }
+    }
+}
+</script>
 
 <style scoped>
     ul {
@@ -19,12 +31,12 @@
     }
 
     a {
-        font-size: .7rem;
+        font-size: 1rem;
         text-decoration: none;
         color: #111;
         font-weight: 500;
     }
-    a.active {
+    a.router-link-active {
         border-bottom: 1px solid #193498;
     }
     li:not(:last-child){

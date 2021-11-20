@@ -41,8 +41,8 @@ export default {
 li {
     padding: .4rem .8rem;
     border-radius: 50%;
-    font-size: .5rem;
-    font-weight: 500;
+    font-size: .8rem;
+    font-weight: 800;
 }
 
 li.active {
