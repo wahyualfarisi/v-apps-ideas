@@ -88,7 +88,7 @@ export default {
 
             const payload = {
                 title: this.title.val,
-                mount: this.mount.val,
+                total: +this.mount.val,
                 type: this.type.val
             }
             

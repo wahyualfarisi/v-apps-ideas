@@ -38,11 +38,6 @@ export default {
         TransactionItem,
         Pagination
     },
-    inject: {
-        transactions: {
-            type: Array
-        }
-    },
     data(){
         return {
             currentPage: 1,
@@ -50,6 +45,9 @@ export default {
         }
     },
     computed: {
+        transactions() {
+            return this.$store.getters['moneyTracker/getAllTransactions']
+        },
         getData(){
             const firstPageIndex = (this.currentPage - 1) * this.pageSize;
             const lastPageIndex = firstPageIndex + this.pageSize;

@@ -3,20 +3,13 @@
 </template>
 <script>
 import TheTransactions from './../organisms/TheTransactions/TheTransactions';
-import MockData from './../../mock-data/transactions';
 export default {
     components: {
       TheTransactions
     },
     data(){
       return {
-        title: 'Money Tracker',
-        transactions: MockData || []
-      }
-    },
-    provide(){
-      return {
-        transactions: this.transactions
+        title: 'Money Tracker'
       }
     }
 }

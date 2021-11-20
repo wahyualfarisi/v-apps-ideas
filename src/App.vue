@@ -1,6 +1,15 @@
 <template>
-  <router-view />
+   <router-view /> 
 </template>
+
+<script>
+export default {
+  props: ['bgColor'],
+  computed: {
+
+  }
+}
+</script>
 
 <style>
   * {
@@ -21,5 +30,9 @@
 
   html {
       box-sizing: border-box;
+  }
+
+  body {
+    background-color:#fff;
   }
 </style>

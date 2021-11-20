@@ -5,13 +5,14 @@
 </template>
 <script>
 import FormTransaction from './FormTransaction';
+import types from './../../../../../store/modules/money-tracker/types';
 export default {
     components: {
         FormTransaction
     },
     methods: {
         onSaveTransaction(data){
-            console.log('form on save transaction: ', data);
+            this.$store.dispatch(`moneyTracker/${types.createTransaction}`, data)
         }
     }
 }
