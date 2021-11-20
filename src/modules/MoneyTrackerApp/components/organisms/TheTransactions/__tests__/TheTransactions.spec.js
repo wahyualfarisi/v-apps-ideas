@@ -88,11 +88,11 @@ describe('TheTransactions.vue', () => {
                 }
             }
         });
-        expect(wrapper.get('[data-test="total-inc"]').text()).toBe('0')
-        expect(wrapper.get('[data-test="total-exp"]').text()).toBe('0')
+        expect(wrapper.get('[data-test="total-inc"]').text()).toBe(wrapper.vm.totalIncomes.toString())
+        expect(wrapper.get('[data-test="total-exp"]').text()).toBe(wrapper.vm.totalExpenses.toString())
     });
 
-    it('should renders 14000000 in total incomes && 500000 in total expense', () => {
+    it  ('should renders 14000000 in total incomes && 500000 in total expense', () => {
         let wrapper = mount(TheTransactions, {
             global: {
                 mocks: {
@@ -107,8 +107,11 @@ describe('TheTransactions.vue', () => {
                 }
             }
         });
-        expect( wrapper.get('[data-test="total-inc"]').text() ).toBe('14000000')
-        expect( wrapper.get('[data-test="total-exp"]').text() ).toBe('500000')
+
+        expect( wrapper.get('[data-test="total-inc"]').text() ).toBe(wrapper.vm.totalIncomes.toString())
+        expect( wrapper.get('[data-test="total-exp"]').text() ).toBe(wrapper.vm.totalExpenses.toString())
     });
+
+    
 
 });

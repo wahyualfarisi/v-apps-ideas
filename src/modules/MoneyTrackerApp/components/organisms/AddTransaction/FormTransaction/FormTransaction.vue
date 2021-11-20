@@ -5,7 +5,8 @@
             :labelName="title.label">
             <input 
                 type="text" 
-                v-model.trim="title.val" 
+                v-model.trim="title.val"
+                id="title" 
             />
         </form-group>
 
@@ -14,7 +15,8 @@
             :labelName="mount.label">
             <input 
                 type="number" 
-                v-model.trim="mount.val" 
+                v-model.number="mount.val" 
+                id="mount"
             />
         </form-group>
 
@@ -29,7 +31,7 @@
                     v-model="type.val" 
                     value="exp" 
                 />
-                <label for="exp">Expense</label>
+                <label for="exp" data-test="exp">Expense</label>
             </div>
 
             <div class="form-checkbox">
@@ -39,13 +41,13 @@
                     v-model="type.val" 
                     value="inc" 
                 />
-                <label for="inc">Income</label>
+                <label for="inc" data-test="inc">Income</label>
             </div>
         </form-group>
 
         <p v-if="formInValid" class="error-message">Please check your input</p>
         
-        <base-button>CREATE</base-button>
+        <base-button data-test="btn">CREATE</base-button>
    </form>
 </template>
 
@@ -81,7 +83,7 @@ export default {
         submitHandler(){
             if( this.title.val === "" || this.mount.val === "" || this.type.val === "") {
                 this.formInValid = true;
-                return;
+                return false;
             }
 
             this.formInValid = false;
