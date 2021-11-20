@@ -28,7 +28,7 @@ export default {
 
 <style scoped>
   #money-tracker {
-    width: 55%;
+    width: 40%;
     margin: auto;
   }
 </style>

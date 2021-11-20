@@ -48,7 +48,7 @@ export default {
     padding: .5rem;
   }
   li:not(:last-child){
-      margin-bottom: .5rem;
+      margin-bottom: 2rem;
   }
   header {
       display: flex;
