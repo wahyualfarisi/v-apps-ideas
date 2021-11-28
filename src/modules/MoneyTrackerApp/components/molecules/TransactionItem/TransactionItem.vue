@@ -46,9 +46,7 @@ export default {
   li {
     box-shadow: 2px 2px 6px rgba(223, 216, 202, 25%);
     padding: .5rem;
-  }
-  li:not(:last-child){
-      margin-bottom: 2rem;
+    margin-bottom: 2rem;
   }
   header {
       display: flex;

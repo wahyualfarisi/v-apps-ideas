@@ -1,14 +1,21 @@
 <template>
    <nav>
-      <ul>
-        <li><router-link :to="listTransactionLink">List</router-link> </li>
-        <li><router-link :to="newTransactionLink">New Transaction</router-link> </li>
-      </ul>
+      <base-card>
+        <ul>
+            <li><router-link :to="listTransactionLink">List</router-link> </li>
+            <li><router-link :to="newTransactionLink">New Transaction</router-link> </li>
+        </ul>
+      </base-card>
     </nav>
 </template>
 
 <script>
+import BaseCard from './../../atoms/BaseCard';
 export default {
+    components: {
+        BaseCard
+    },
+
     computed: {
         newTransactionLink(){
             return 'add-transaction'
@@ -24,10 +31,6 @@ export default {
     ul {
         list-style-type: none;
         display: flex;
-        background-color: #fff;
-        box-shadow: 2px 4px 6px rgba(223, 216, 202, 25%);
-        border-radius: .5rem;
-        padding: .6rem;
     }
 
     a {

@@ -1,17 +1,20 @@
 <template>
-  <ul>
-      <pagination-item
-        v-for="page in createPagination"
-        :key="page"
-        :page="page"
-        :currentPage="currentPage"
-        @onPageChange="onPageHandler"
-      ></pagination-item>
-  </ul>
+  <base-card>
+    <ul>
+        <pagination-item
+            v-for="page in createPagination"
+            :key="page"
+            :page="page"
+            :currentPage="currentPage"
+            @onPageChange="onPageHandler"
+        ></pagination-item>
+    </ul>
+  </base-card>
 </template>
 
 <script>
 import PaginationItem from './../../molecules/PaginationItem';
+import BaseCard from './../../atoms/BaseCard';
 
 function range(start, end) {
     const length = end - start + 1;
@@ -23,7 +26,8 @@ export const NAV_RIGHT = 'right';
 
 export default {
     components: {
-        PaginationItem
+        PaginationItem,
+        BaseCard
     },
     props: {
         totalCount: {
@@ -92,7 +96,6 @@ export default {
 
 <style scoped>
     ul {
-        margin-top: 3rem;
         list-style-type: none;
         display: flex;
         justify-content: center;

@@ -1,64 +1,68 @@
 <template>
-   <form class="form" @submit.prevent="submitHandler">
-        <form-group 
-            :field="title.label" 
-            :labelName="title.label">
-            <input 
-                type="text" 
-                v-model.trim="title.val"
-                id="title" 
-            />
-        </form-group>
-
-        <form-group 
-            :field="mount.label" 
-            :labelName="mount.label">
-            <input 
-                type="number" 
-                v-model.number="mount.val" 
-                id="mount"
-            />
-        </form-group>
-
-        <form-group
-            :field="type.label"
-            :labelName="type.label"
-        >
-            <div class="form-checkbox">
+   <base-card>
+        <form class="form" @submit.prevent="submitHandler">
+            <form-group 
+                :field="title.label" 
+                :labelName="title.label">
                 <input 
-                    type="radio" 
-                    id="exp" 
-                    v-model="type.val" 
-                    value="exp" 
+                    type="text" 
+                    v-model.trim="title.val"
+                    id="title" 
                 />
-                <label for="exp" data-test="exp">Expense</label>
-            </div>
+            </form-group>
 
-            <div class="form-checkbox">
+            <form-group 
+                :field="mount.label" 
+                :labelName="mount.label">
                 <input 
-                    type="radio" 
-                    id="inc" 
-                    v-model="type.val" 
-                    value="inc" 
+                    type="number" 
+                    v-model.number="mount.val" 
+                    id="mount"
                 />
-                <label for="inc" data-test="inc">Income</label>
-            </div>
-        </form-group>
+            </form-group>
 
-        <p v-if="formInValid" class="error-message">Please check your input</p>
-        
-        <base-button data-test="btn">CREATE</base-button>
-   </form>
+            <form-group
+                :field="type.label"
+                :labelName="type.label"
+            >
+                <div class="form-checkbox">
+                    <input 
+                        type="radio" 
+                        id="exp" 
+                        v-model="type.val" 
+                        value="exp" 
+                    />
+                    <label for="exp" data-test="exp">Expense</label>
+                </div>
+
+                <div class="form-checkbox">
+                    <input 
+                        type="radio" 
+                        id="inc" 
+                        v-model="type.val" 
+                        value="inc" 
+                    />
+                    <label for="inc" data-test="inc">Income</label>
+                </div>
+            </form-group>
+
+            <p v-if="formInValid" class="error-message">Please check your input</p>
+            
+            <base-button data-test="btn">CREATE</base-button>
+        </form>
+   </base-card>
 </template>
 
 <script>
 import FormGroup from './../../../molecules/FormGroup';
 import BaseButton from './../../../atoms/BaseButton';
+import BaseCard from './../../../atoms/BaseCard';
 export default {
     emits: ['save-data'],
     components: {
         FormGroup,
-        BaseButton
+        BaseButton,
+        BaseCard
     },
 
     data(){
